@@ -378,7 +378,9 @@ fs.access('file/that/does/not/exist', (err) => {
 
 ## `util.getSystemErrorMap()`
 <!-- YAML
-added: v16.0.0
+added:
+  - v16.0.0
+  - v14.17.0
 -->
 
 * Returns: {Map}
@@ -403,6 +405,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3455
     description: The `constructor` parameter can refer to an ES6 class now.
 -->
+
+> Stability: 3 - Legacy: Use ES2015 class syntax and `extends` keyword instead.
 
 * `constructor` {Function}
 * `superConstructor` {Function}
@@ -1483,6 +1487,16 @@ util.types.isBoxedPrimitive(Object(Symbol('foo'))); // Returns true
 util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 ```
 
+### `util.types.isCryptoKey(value)`
+<!-- YAML
+added: v16.2.0
+-->
+
+* `value` {Object}
+* Returns: {boolean}
+
+Returns `true` if `value` is a {CryptoKey}, `false` otherwise.
+
 ### `util.types.isDataView(value)`
 <!-- YAML
 added: v10.0.0
@@ -1677,6 +1691,16 @@ util.types.isInt32Array(new ArrayBuffer());  // Returns false
 util.types.isInt32Array(new Int32Array());  // Returns true
 util.types.isInt32Array(new Float64Array());  // Returns false
 ```
+
+### `util.types.isKeyObject(value)`
+<!-- YAML
+added: v16.2.0
+-->
+
+* `value` {Object}
+* Returns: {boolean}
+
+Returns `true` if `value` is a {KeyObject}, `false` otherwise.
 
 ### `util.types.isMap(value)`
 <!-- YAML
