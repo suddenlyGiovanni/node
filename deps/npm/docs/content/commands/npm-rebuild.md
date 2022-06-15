@@ -70,6 +70,21 @@ systems.
 <!-- automatically generated, do not edit manually -->
 <!-- see lib/utils/config/definitions.js -->
 
+#### `foreground-scripts`
+
+* Default: false
+* Type: Boolean
+
+Run all build scripts (ie, `preinstall`, `install`, and `postinstall`)
+scripts for installed packages in the foreground process, sharing standard
+input, output, and error with the main npm process.
+
+Note that this will generally make installs run slower, and be much noisier,
+but can be useful for debugging.
+
+<!-- automatically generated, do not edit manually -->
+<!-- see lib/utils/config/definitions.js -->
+
 #### `ignore-scripts`
 
 * Default: false
@@ -141,6 +156,20 @@ Include the workspace root when workspaces are enabled for a command.
 When false, specifying individual workspaces via the `workspace` config, or
 all workspaces via the `workspaces` flag, will cause npm to operate only on
 the specified workspaces, and not on the root project.
+
+This value is not exported to the environment for child processes.
+
+<!-- automatically generated, do not edit manually -->
+<!-- see lib/utils/config/definitions.js -->
+
+#### `install-links`
+
+* Default: false
+* Type: Boolean
+
+When set file: protocol dependencies that exist outside of the project root
+will be packed and installed as regular dependencies instead of creating a
+symlink. This option has no effect on workspaces.
 
 <!-- automatically generated, do not edit manually -->
 <!-- see lib/utils/config/definitions.js -->

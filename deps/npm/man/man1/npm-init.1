@@ -1,4 +1,4 @@
-.TH "NPM\-INIT" "1" "March 2022" "" ""
+.TH "NPM\-INIT" "1" "June 2022" "" ""
 .SH "NAME"
 \fBnpm-init\fR \- Create a package\.json file
 .SS Synopsis
@@ -225,6 +225,8 @@ Allow conflicting peerDependencies to be installed in the root project\.
 Implicitly set \fB\-\-yes\fP during \fBnpm init\fP\|\.
 .IP \(bu 2
 Allow clobbering existing values in \fBnpm pkg\fP
+.IP \(bu 2
+Allow unpublishing of entire packages (not just a single version)\.
 
 .RE
 .P
@@ -284,6 +286,17 @@ other things (test, exec, publish, etc\.) will operate on the root project,
 .RE
 .P
 This value is not exported to the environment for child processes\.
+.SS \fBworkspaces\-update\fP
+.RS 0
+.IP \(bu 2
+Default: true
+.IP \(bu 2
+Type: Boolean
+
+.RE
+.P
+If set to true, the npm cli will run an update after operations that may
+possibly change the workspaces installed to the \fBnode_modules\fP folder\.
 .SS \fBinclude\-workspace\-root\fP
 .RS 0
 .IP \(bu 2
@@ -298,6 +311,8 @@ Include the workspace root when workspaces are enabled for a command\.
 When false, specifying individual workspaces via the \fBworkspace\fP config, or
 all workspaces via the \fBworkspaces\fP flag, will cause npm to operate only on
 the specified workspaces, and not on the root project\.
+.P
+This value is not exported to the environment for child processes\.
 .SS See Also
 .RS 0
 .IP \(bu 2

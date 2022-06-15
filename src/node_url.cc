@@ -222,8 +222,7 @@ void AppendOrEscape(std::string* str,
     *str += ch;
 }
 
-template <typename T>
-unsigned hex2bin(const T ch) {
+unsigned hex2bin(const char ch) {
   if (ch >= '0' && ch <= '9')
     return ch - '0';
   if (ch >= 'A' && ch <= 'F')
@@ -412,8 +411,7 @@ void URLHost::ParseIPv4Host(const char* input, size_t length, bool* is_ipv4) {
     const char ch = pointer < end ? pointer[0] : kEOL;
     int64_t remaining = end - pointer - 1;
     if (ch == '.' || ch == kEOL) {
-      if (++parts > static_cast<int>(arraysize(numbers)))
-        return;
+      if (++parts > static_cast<int>(arraysize(numbers))) return;
       if (pointer == mark)
         return;
       int64_t n = ParseNumber(mark, pointer);
@@ -1667,7 +1665,7 @@ void Parse(Environment* env,
       null,  // fragment defaults to null
     };
     SetArgs(env, argv, url);
-    cb->Call(context, recv, arraysize(argv), argv).FromMaybe(Local<Value>());
+    USE(cb->Call(context, recv, arraysize(argv), argv));
   } else if (error_cb->IsFunction()) {
     Local<Value> flags = Integer::NewFromUnsigned(isolate, url.flags);
     USE(error_cb.As<Function>()->Call(context, recv, 1, &flags));
